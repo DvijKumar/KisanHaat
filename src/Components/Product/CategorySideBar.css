@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 .categorysidebar .category img {
     width: 40px;
     height: 40px;
@@ -19,6 +21,8 @@
     gap: 10px;
     color: #fff;
     transition: color 0.3s;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
 }
 
 .categorysidebar .category:hover{

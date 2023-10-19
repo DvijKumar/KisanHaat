@@ -1,180 +1,107 @@
-import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
-import logo from "../../Assests/logo1.png";
+import React, { useState } from "react";
 import "./Navbar.css";
+import logo from "../../Assests/logo1.png";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const Navbar = () => {
-  const ESC_KEY_CODE = "Escape";
+  const [cartquantity, setcartquantity] = useState(0);
+  return (
+    <nav>
+      <div className="s1">
+        <img src={logo} alt="logo1" className="logo" />
 
-  const NavigationMenu = (props) => {
-    const { navOpen, navIsAnimating, closeNav } = props;
+        <div className="searchbar">
+          <input
+            type="text"
+            placeholder="Search for Products and more"
+            className="search"
+          />
 
-    const keyPressHandler = ({ key }) => {
-      if (key === ESC_KEY_CODE && navOpen) {
-        closeNav();
-      }
-    };
-
-    useEffect(() => {
-      window.addEventListener("keydown", keyPressHandler);
-      return () => {
-        window.removeEventListener("keydown", keyPressHandler);
-      };
-    }, [navOpen]);
-
-    const classes = `${navOpen ? " active" : ""}${
-      navIsAnimating ? " is-animating" : ""
-    }`;
-
-    return (
-      <div className={`navigation-menu${classes}`}>
-        <div className="wrap">
-          <div className="cols">
-            <div className="col col-left col-links">
-              <ul className="links">
-                <li className="link">
-                  <a
-                  // href="https://en.wikipedia.org/wiki/David_Bowie"
-                  // target="_blank"
-                  // rel="noopener noreferrer"
-                  // aria-label="Navigates to"
-                  >
-                    About Kisan Haat
-                  </a>
-                </li>
-                <li className="link">
-                  <a
-                  // href="https://images.nasa.gov/"
-                  // target="_blank"
-                  // rel="noopener noreferrer"
-                  // aria-label="Navigates to"
-                  >
-                    Products
-                  </a>
-                </li>
-                <li className="link">
-                  <a
-                  // href="https://www.nasa.gov/audience/foreducators/stem-on-station/ditl_eating"
-                  // target="_blank"
-                  // rel="noopener noreferrer"
-                  // aria-label="Navigates to"
-                  ></a>
-                </li>
-                <li className="link">
-                  <a
-                  // href="https://en.wikipedia.org/wiki/Mission_control_center"
-                  // target="_blank"
-                  // rel="noopener noreferrer"
-                  // aria-label="Navigates to"
-                  >
-                    Contact Ground Control
-                  </a>
-                </li>
-                <li className="link">
-                  <a
-                  // href="https://en.wikipedia.org/wiki/Mission_control_center"
-                  // target="_blank"
-                  // rel="noopener noreferrer"
-                  // aria-label="Navigates to"
-                  >
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="col col-right col-image">
-              <img className="kisanhaatlogo" src={logo} alt="logo1.png" />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const Header = (props) => {
-    const { navOpen, navIsAnimating, toggleNavHandler } = props;
-
-    return (
-      <header className="header">
-        <div className="wrap">
-          {/* <div className='logo'>
-            <img src={logo} alt='logo1.png' />
-          </div> */}
-          <button
-            className={`nav-button${navIsAnimating ? " is-animating" : ""}`}
-            type="button"
-            aria-label="Toggle Navigation"
-            onClick={(event) => toggleNavHandler(event)}
-          >
-            <span className={`label--nav-closed${!navOpen ? " active" : ""}`}>
-              menu
-            </span>
-            <span className={`label--nav-open${navOpen ? " active" : ""}`}>
-              close
-            </span>
+          <button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              />
+            </svg>
           </button>
         </div>
-      </header>
-    );
-  };
 
-  class App extends React.Component {
-    state = {
-      navOpen: false,
-      navIsAnimating: false,
-    };
+        <div className="right">
+          <div className="cart">
+            <span className="quantity">{cartquantity}</span>
 
-    toggleNav = (event) => {
-      event.preventDefault();
-      const { navOpen } = this.state;
+            {/* cart icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+              />
+            </svg>
+          </div>
 
-      this.setState({
-        navIsAnimating: true,
-      });
-
-      if (navOpen) {
-        document.body.classList.remove("nav-open");
-      } else {
-        document.body.classList.add("nav-open");
-      }
-
-      setTimeout(() => {
-        this.setState((prevState) => ({
-          navIsAnimating: false,
-          navOpen: !prevState.navOpen,
-        }));
-      }, 500);
-    };
-
-    closeNav = () => {
-      document.body.classList.remove("nav-open");
-      this.setState({
-        navOpen: false,
-      });
-    };
-
-    render() {
-      const { navOpen, navIsAnimating } = this.state;
-
-      return (
-        <div className="layout">
-          <Header
-            navOpen={navOpen}
-            toggleNavHandler={(event) => this.toggleNav(event)}
-            navIsAnimating={navIsAnimating}
-          />
-          <NavigationMenu
-            navOpen={navOpen}
-            navIsAnimating={navIsAnimating}
-            closeNav={(event) => this.closeNav(event)}
-            toggleNavHandler={(event) => this.toggleNav(event)}
-          />
+          {/* user icon */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+          </svg>
         </div>
-      );
-    }
-  }
+      </div>
+      <div className="s2">
+    <Dropdown>
+      <Dropdown.Toggle className="categories" variant="" id="dropdown-basic">
+        Categories
+      </Dropdown.Toggle>
 
-  ReactDOM.render(<App />, document.getElementById("app"));
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">Vegetables</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Fruits</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+
+    <a className="aboutus">About Us</a>
+    <a className="contactus">Contact Us</a>
+    <Dropdown>
+      <Dropdown.Toggle className="more" variant="" id="dropdown-basic">
+        More
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">FAQ</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Privacy Policy</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Terms & Conditions</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+
+      </div>
+    </nav>
+  );
 };
 
 export default Navbar;
