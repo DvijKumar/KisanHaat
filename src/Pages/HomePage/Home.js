@@ -13,7 +13,7 @@ const Home = () => {
       <HomeCategories />
       <Product_Sidebar />
       
-    Home</div>
+      </div>
   )
 }
 
