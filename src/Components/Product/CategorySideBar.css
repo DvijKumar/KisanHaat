@@ -17,11 +17,27 @@
     padding: 10px 20px;
     flex-wrap: wrap;
     gap: 10px;
+    color: #fff;
+    transition: color 0.3s;
 }
 
 .categorysidebar .category:hover{
-    background-color: #cdffc8;
+    /* background-color: transparent;
+    color: blue; */
+    animation: neon-animation 1s infinite;
 }
+
+@keyframes neon-animation {
+    0% {
+      color: #ff00ff; /* Set the initial neon color */
+    }
+    50% {
+      color: #00ffff; /* Set the intermediate neon color */
+    }
+    100% {
+      color: #ff00ff; /* Set the final neon color */
+    }
+  }
 
 .categorysidebar .category h3{
     /* margin:  0px 20px; */
