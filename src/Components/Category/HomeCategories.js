@@ -1,9 +1,9 @@
 import React from 'react'
 import './HomeCategories.css'
-import img1 from '../../Assests/1.png'
-import img2 from '../../Assests/2.png'
-import img3 from '../../Assests/3.png'
-import img4 from '../../Assests/4.png'
+import img1 from '../../Assests/Images/1.png'
+import img2 from '../../Assests/Images/2.png'
+import img3 from '../../Assests/Images/3.png'
+import img4 from '../../Assests/Images/4.png'
 
 const HomeCategories = () => {
   return (

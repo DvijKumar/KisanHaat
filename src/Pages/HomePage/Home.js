@@ -1,8 +1,11 @@
 import React from 'react'
+import './Home.css'
 import Navbar from '../../Components/Navbar/Navbar'
 import BannerSlider from '../../Components/Banner/BannerSlider'
 import HomeCategories from '../../Components/Category/HomeCategories'
 import Product_Sidebar from '../../Components/Product/Product_SideBar'
+import Footer1 from '../../Components/Footer/Footer1'
+import Footer2 from '../../Components/Footer/Footer2'
 
 const Home = () => {
   return (
@@ -12,6 +15,8 @@ const Home = () => {
       <BannerSlider />
       <HomeCategories />
       <Product_Sidebar />
+      <Footer1 />
+      <Footer2 />
       
       </div>
   )
