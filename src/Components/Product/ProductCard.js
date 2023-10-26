@@ -1,7 +1,14 @@
 import React from "react";
 import './ProductCard.css'
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ data }) => {
+  
+  const [show, setShow] = React.useState(false);
+  const [qty, setqty] = React.useState(1);
+  const getproductid = () => {
+    alert(data.id);
+  };
   return (
     <div className="product">
       <div className="s1">
@@ -17,7 +24,28 @@ const ProductCard = ({ data }) => {
       <div className="s3">
         <p>{data.counttype}</p>
       </div>
-      <div className="addbtn">
+      {
+        show ? <div className="addbtn">
+          <div className="qty">
+            <button onClick={()=>{if(qty>1){setqty(qty-1)
+            }
+            }}
+            >-</button>
+            <p>{qty}</p>
+            <button onClick={() => setqty(qty + 1)}>+</button>
+          </div>
+          <button className="addtocart"
+          OnClick={()=>{
+            setShow(false);
+            setqty(1);
+            alert("Added to Cart");
+          }}
+          >
+            Add to Cart
+          </button>
+        </div>
+        :
+        <div className="addbtn">
         {/* viewbutton */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -26,6 +54,7 @@ const ProductCard = ({ data }) => {
           strokeWidth={1.5}
           stroke="currentColor"
           className="w-6 h-6"
+          onClick={()=> getproductid()}
         >
           <path
             strokeLinecap="round"
@@ -39,6 +68,9 @@ const ProductCard = ({ data }) => {
           />
         </svg>
         {/* addbutton */}
+        <Link
+        to={`/product/${data.id}`}
+        >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -46,14 +78,17 @@ const ProductCard = ({ data }) => {
           strokeWidth={1.5}
           stroke="currentColor"
           className="w-6 h-6"
+          onClick={() => setShow(true)}
         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
             d="M12 4.5v15m7.5-7.5h-15"
-          />
-        </svg>
+            />
+            </svg>
+        </Link>
       </div>
+      }
     </div>
   );
 };

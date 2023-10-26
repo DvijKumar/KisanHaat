@@ -1,0 +1,78 @@
+.goback {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #000;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.goback::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    255,
+    0,
+    0.5
+  ); /* Neon green color with 50% opacity */
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.goback:hover::before {
+  opacity: 1;
+}
+
+.goback:hover .w-6 {
+  animation: rotateAnimation 2s infinite;
+}
+
+.goback:hover path {
+  stroke: rgba(255, 0, 255, 1);
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.productpage .pc1 {
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.productpage .pc1 .c11 {
+  display: flex;
+  justify-content: flex-start;
+  width: 30%;
+}
+
+.productpage .pc1 .c11 .imgset {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  margin: 0px 10px;
+}
+
+/* some error hear */
+/* .productpage .pc1 .c11 .imgset img {
+  width: 100%;
+  padding-bottom: 50%;
+  cursor: pointer;
+} */

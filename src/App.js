@@ -6,6 +6,7 @@ import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import RingLoader from "react-spinners/RingLoader";
+import ProductPage from "./Pages/Product/ProductPage";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -37,6 +38,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/product/:prodid" element={<ProductPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </BrowserRouter>
