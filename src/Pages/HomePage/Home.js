@@ -10,7 +10,9 @@ import Footer2 from '../../Components/Footer/Footer2'
 const Home = () => {
   return (
     <div>
-      
+      <div className='bg'></div>
+      <div className='bg bg2'></div>
+      <div className='bg bg3'></div>
       <Navbar />
       <BannerSlider />
       <HomeCategories />
