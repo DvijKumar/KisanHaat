@@ -34,6 +34,9 @@ const App = () => {
         </div>
       ) : (
         <BrowserRouter>
+        <div className="bg"></div>
+        <div className="bg bg2"></div>
+        <div className="bg bg3"></div>
           {/* <ParticleBg /> */}
           <Routes>
             <Route path="/" element={<Home />} />

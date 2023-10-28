@@ -10,6 +10,7 @@ import Footer2 from '../../Components/Footer/Footer2'
 import Navbar from "../../Components/Navbar/Navbar";
 import ProductsSlider from '../../Components/Product/ProductsSlider'
 import "./ProductPage.css";
+
 const ProductPage = () => {
   const { prodid } = useParams();
   const [imageset, setimageset] = React.useState(null);
