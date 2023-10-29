@@ -59,7 +59,7 @@ const ProductCard = ({ data }) => {
   return (
     <div className='product'>
       <div className='s1'>
-        <img src={data.ProductImage[0].image} alt={'no img'} />
+        <img src={data?.ProductImage[0].image} alt={'no img'} />
       </div>
       <div className='s2'>
         <h3>
